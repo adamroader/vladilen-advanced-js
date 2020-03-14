@@ -403,6 +403,56 @@
 
 // ------------------vladilen. js Prostym yazykom. 8 Urok (async await)-----------------//
 
+
+
+// const delay = ms => {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve()
+//         }, ms)
+//     })
+// }
+
+// // delay(2000).then(() => console.log('1 sec'))
+
+// const url = 'https://jsonplaceholder.typicode.com/todos'
+
+
+// const fetchTodos = () => {
+//     console.log('fetch to do started...')
+//     return delay(2000)
+//     .then(() =>  fetch(url))
+//     .then(response =>  response.json())
+// }
+
+// fetchTodos()
+// .then (data => console.log('Data:', data))
+// .catch(err => console.error(err)) 
+
+
+// async function fetchAsyncTools() {
+//     try{
+//         console.log('fetch to do started...')
+//         await delay(2000)
+//         const response = await fetch(url)
+//         const data = await response.json()
+//         console.log('Data:', data);
+//     }
+//     catch(e) {
+//         console.error(e);  
+//     }
+//     finally{
+//         console.log('done');
+        
+//     }
+// }
+
+// fetchAsyncTools()
+
+
+
+
+
 // ------------------vladilen. js Prostym yazykom. 9 Urok (Proxy)-----------------//
 // ------------------vladilen. js Prostym yazykom. 10 Urok (Proxy. Practice)-----------------//
 // ------------------vladilen. js Prostym yazykom. 11 Urok (Generators.yield, symbols, for of)-----------------//
@@ -453,3 +503,221 @@
 //     console.log(k)
     
 // }
+
+
+
+// ------------------vladilen. js Prostym yazykom. 12 Urok (Higher Order Functions)-----------------//
+
+// const people = [
+//     {name: 'Joey', age: 30, budget: 1000},
+//     {name: 'Chandler', age: 25, budget: 100000},
+//     {name: 'Ross', age: 15, budget: 90000},
+//     {name: 'Phoeby', age: 18, budget: 500},
+//     {name: 'Monica', age: 20, budget: 50000},
+//     {name: 'Rachel', age: 60, budget: 75000},
+// ] 
+
+// for(let i = 0; i < people.length; i++) {
+//     console.log(people[i]);
+// }
+
+// for (let person of people) {
+//     console.log(person);
+// }
+
+                            //-------------forEach----------------//
+
+// people.forEach((item, index, array)=> {
+//    console.log(item);
+// });
+
+// people.forEach(item => console.log(item))
+
+
+
+
+                            //-------------map----------------//
+
+
+
+// const newPeople = people.map((item) => {
+//     return item.name
+    
+// })
+
+// console.log(newPeople);
+
+
+
+
+                           //-------------filter----------------//
+
+
+// const adults = [];
+
+// // for(i = 0; i < people.length; i++) {
+// //     if(people[i].age > 18) {
+// //         adults.push(people[i])
+// //     }
+// // }
+
+// console.log(adults);
+
+
+// const newP = people.filter((item) => {
+//     return item.age > 25
+// })
+
+// console.log(newP);
+
+                             //-------------reduce----------------//
+
+// let amount = 0;
+
+// for(i = 0; i < people.length; i++) {
+//     amount += people[i].budget
+// }
+
+// const amount = people.reduce((total, item) => {
+//     return total + item.budget
+// }, 0)
+
+// console.log(amount);
+
+
+                            //-------------find----------------//
+
+// const joey = people.find((item) => {
+//     return item.name === 'Joey'
+// })
+
+// console.log(joey.name);
+
+
+//                             //-------------findIndex----------------//
+
+// const joeyIndex = people.findIndex((item) => {
+//     return item.name === 'Joey'
+// })
+
+// console.log(joeyIndex);
+
+
+                            //-------------Practice with HOF mixed----------------//
+
+// const amount = people
+
+// .filter((item) => {
+//     return item.budget > 40000
+// })
+
+// .map((item) => {
+//     return {
+//         info: `${item.name}, ${item.age}`,
+//         budget: item.budget
+//     }
+// })
+
+// .reduce((total, item) => {
+//     return total + item.budget
+// }, 0)
+
+// console.log(amount);
+
+// ------------------vladilen. js Prostym yazykom. 13 Urok ( Map, Set, WeakMap, WeakSet, examples )-----------------//
+
+// Look map.js, set.js, weakmap.js, weakset.js
+
+
+// ------------------vladilen. js Prostym yazykom. 14 Urok ( Fetch, XMLHttpRequest (XHR), Ajax )-----------------//
+
+//==========XMLHttpRequest method==============//
+
+// const requestURL = 'https://jsonplaceholder.typicode.com/users'
+
+// const xhr = new XMLHttpRequest()
+
+// const obj = {
+//     name: 'Joey',
+//     age: 30
+// }
+
+
+// function sendRequest(method, url, body = null) {
+//     return new Promise((resolve, reject) => {
+//         xhr.open(method, url)
+
+//         xhr.responseType = 'json' // or instead of xhr.responseType = 'json', JSON.parse() wrapped around xhr.response
+
+//         xhr.setRequestHeader('Content-Type', 'application/json')
+
+
+//         xhr.onload = () => {
+//             if(xhr.status >= 400) {
+//                 reject(xhr.response);     
+//             }
+            
+//             resolve(xhr.response) 
+//         }
+
+//         xhr.onerror = () => {
+//             resolve(xhr.response) 
+//         }
+
+//         xhr.send(JSON.stringify(body))
+//     })
+// }
+
+// // sendRequest('GET', requestURL)
+// // .then(data => {console.log(data)})
+// // .catch(err => {console.error(err)})
+
+
+// sendRequest('POST', requestURL, obj)
+// .then(data => {console.log(data)})
+// .catch(err => {console.error(err)})
+
+
+//==========fetch method==============//
+
+const requestURL = 'https://jsonplaceholder.typicode.com/users'
+
+
+
+const obj = {
+    name: 'Joey',
+    age: 30
+}
+
+
+// function sendRequest(method, url, body = null) {
+//    return fetch(url).then(response => {
+//        return response.json()
+//    })
+// }
+
+// sendRequest('GET', requestURL)
+// .then((response) => {console.log(response)})
+// .catch((response) => {console.error(response)})
+
+function sendRequest(method, url, body = null) {
+
+    const headers = {
+        'Content-Type': 'application/json'
+    }
+
+    return fetch(url, {
+        method: method,
+        body: JSON.stringify(body),
+        headers: headers
+    }).then(response => {
+        if(response.ok) {
+            return response.json()
+        }
+        
+    })
+ }
+
+sendRequest('POST', requestURL, obj)
+.then(data => {console.log(data)})
+.catch(err => {console.error(err)})
