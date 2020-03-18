@@ -680,44 +680,188 @@
 
 //==========fetch method==============//
 
-const requestURL = 'https://jsonplaceholder.typicode.com/users'
+// const requestURL = 'https://jsonplaceholder.typicode.com/users'
 
 
 
-const obj = {
-    name: 'Joey',
-    age: 30
-}
-
-
-// function sendRequest(method, url, body = null) {
-//    return fetch(url).then(response => {
-//        return response.json()
-//    })
+// const obj = {
+//     name: 'Joey',
+//     age: 30
 // }
 
-// sendRequest('GET', requestURL)
-// .then((response) => {console.log(response)})
-// .catch((response) => {console.error(response)})
 
-function sendRequest(method, url, body = null) {
+// // function sendRequest(method, url, body = null) {
+// //    return fetch(url).then(response => {
+// //        return response.json()
+// //    })
+// // }
 
-    const headers = {
-        'Content-Type': 'application/json'
-    }
+// // sendRequest('GET', requestURL)
+// // .then((response) => {console.log(response)})
+// // .catch((response) => {console.error(response)})
 
-    return fetch(url, {
-        method: method,
-        body: JSON.stringify(body),
-        headers: headers
-    }).then(response => {
-        if(response.ok) {
-            return response.json()
-        }
+// function sendRequest(method, url, body = null) {
+
+//     const headers = {
+//         'Content-Type': 'application/json'
+//     }
+
+//     return fetch(url, {
+//         method: method,
+//         body: JSON.stringify(body),
+//         headers: headers
+//     }).then(response => {
+//         if(response.ok) {
+//             return response.json()
+//         }
         
-    })
- }
+//     })
+//  }
 
-sendRequest('POST', requestURL, obj)
-.then(data => {console.log(data)})
-.catch(err => {console.error(err)})
+// sendRequest('POST', requestURL, obj)
+// .then(data => {console.log(data)})
+// .catch(err => {console.error(err)})
+
+
+// ------------------vladilen. js Prostym yazykom. 15 Urok ( Spread and rest )-----------------//
+
+// const citiesRussia = ['Moscow', 'Soscow', 'Doscow', 'Shmoskow']
+// const citiesEurope = ['London', 'Paris', 'Berlin']
+
+// // const gibberish = ['I', 'would', 'like', 'to', 'order', 'chicken wings']s
+
+// const citiesRussiaPopulation = {
+//     Moscow: 20,
+//     Soscow: 8,
+//     Doscow: 5,
+//     Shmoscow: 3
+// }
+// const citiesEuropePopulation = {
+//     Moscow: 26,
+//     London: 10,
+//     Paris: 3,
+//     Berlin: 2
+// }
+
+
+
+
+// // console.log(...citiesRussia);
+// // console.log([...citiesRussia])
+
+// // const allCities = [...citiesRussia, ...citiesEurope]
+// //  const allCities = citiesRussia.concat(citiesEurope) //old way  
+
+// // console.log(allCities);
+
+// // console.log(...citiesRussiaPopulation); won't work
+// // console.log({...citiesRussiaPopulation, ...citiesEuropePopulation});
+// // console.log({...citiesEuropePopulation, ...citiesRussiaPopulation});
+
+
+// //========Practice=============//
+
+// // const numbers = [5, 37, 42, 17]
+// // console.log(Math.max(numbers)); // NaN
+// // console.log(Math.max.apply(null, numbers)); // old way
+// // console.log(Math.max(...numbers)); 
+
+// // const divs = document.querySelectorAll('div')
+// // const nodes = [...divs]
+// // console.log(nodes);
+// // console.log(divs, Array.isArray(divs));
+// // console.log(nodes, Array.isArray(nodes));
+
+
+// //==========Rest================//
+
+// const numbers = [1, 2, 3, 4, 5]
+
+// // function sum(a, b, ...rest) {
+// //     return a + b + rest.reduce((total, item) => total + item, 0)
+// // }
+
+// // //spread
+// // console.log(sum(...numbers));
+
+// // const a = numbers[0]
+// // const b = numbers[1] // old way
+
+// // const [a, b, ...others] = numbers
+
+// // console.log(a, b, others);
+
+// const person = {
+//     name: 'Joey',
+//     age: 30,
+//     city: 'New York',
+//     country: 'USA'
+// }
+
+// const {name, age, ...address} = person
+
+// console.log(name, age, address);
+
+
+
+// ------------------vladilen. js Prostym yazykom. 16 Urok ( Destructuring )-----------------//
+
+// function calcValue(a, b) {
+//     return [a + b,
+//            a - b, //if undefined, default value is shown 
+//            a * b,
+//            a / b]
+// }
+
+// // const [sum, sub] = calcValue(42, 10)
+// const [sum, sub = 'cant get the result', mult, ...other] = calcValue(42, 10)
+// // console.log(result);
+
+// // const sum = result[0]
+// // const sub = result[1]
+
+// // const [sum, sub] = result
+
+// // console.log(sum, sub, mult, other);
+
+// person = {
+//     name: 'Joey',
+//     age: 30,
+//     address: {
+//         city: 'New York',
+//         country: 'USA'
+//     }
+// }
+
+// // const {name: firstName = 'unknown', age, car = 'not given', address: {city: homeTown, country}} = person
+// // console.log(firstName, age, car, homeTown, country);
+
+// // const {name, ...info} = person
+// // console.log(name, info);
+
+// function logPerson({name, ...info}) {
+//     console.log(name, info);
+    
+// }
+
+// logPerson(person)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
